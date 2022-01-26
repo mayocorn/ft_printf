@@ -18,4 +18,5 @@ typedef struct s_info
 }	t_info;
 void	ft_init_info(t_info *info);
 void	ft_check_flag(const char **format, t_info *info);
+int		ft_max(int a, int b);
 #endif

@@ -6,11 +6,22 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 07:42:52 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/27 08:06:43 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/27 08:45:41 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include "ft_printf.h"
+
+int	ft_write(t_info info, int length, char *s)
+{
+	if (info.minus_flag == TRUE)
+		return (ft_left_write(length, s));
+	else if(info.zero_flag == TRUE)
+		return (ft_zeropd_write(length, s));
+	else
+		return (ft_right_write(length, s));
+}
 
 int	ft_right_write(int length, char *s)
 {
