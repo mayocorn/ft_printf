@@ -1,8 +1,6 @@
-#include <stdio.h>
-
+#include "ft_printf.h"
 int main()
 {
-	printf("2022/1/1\n");
-	printf("%k/%d/%d\n",01,01);
+	ft_printf();
 	return 0;
 }

@@ -6,12 +6,12 @@
 #    By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 05:33:16 by stsunoda          #+#    #+#              #
-#    Updated: 2022/01/26 06:31:48 by stsunoda         ###   ########.fr        #
+#    Updated: 2022/01/26 06:35:43 by stsunoda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCS = ft_libft.c
+SRCS = ft_printf.c
 OBJS = $(SRCS:%.c=%.o)
 LIBFT = libft
 
