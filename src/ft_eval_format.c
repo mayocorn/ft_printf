@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 04:50:22 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/27 05:56:43 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/27 06:00:10 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	ft_eval_flag(const char **format, t_info *info)
 
 void	ft_eval_field_width(const char **format, t_info *info)
 {
-	if (ft_isdigit(**format))
-		info->field_width = ft_atoi(*format);
+	info->field_width = ft_atoi(*format);
 	while (ft_isdigit(**format))
 		(*format)++;
 }
