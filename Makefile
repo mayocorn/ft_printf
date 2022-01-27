@@ -6,17 +6,22 @@
 #    By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 05:33:16 by stsunoda          #+#    #+#              #
-#    Updated: 2022/01/26 06:35:43 by stsunoda         ###   ########.fr        #
+#    Updated: 2022/01/28 04:44:37 by stsunoda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCS = ft_printf.c
-OBJS = $(SRCS:%.c=%.o)
+SRCDIR	= ./srcs
+SRC = ft_printf.c ft_evalformat.c ft_write.c ft_print_x1.c \
+		ft_print_x2.c ft_utils.c
+SRCS = $(addprefix $(SRCDIR)/, $(SRC))
+OBJS = $(addprefix $(SRCDIR)/, $(notdir $(SRCS:.c=.o)))
 LIBFT = libft
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I./include
 
 %.o: %.c
-	$(CC) $(CFLAG) -c $<
+	$(CC) $(CFLAGS) -c $<
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT)

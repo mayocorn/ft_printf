@@ -6,12 +6,11 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 07:42:52 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/27 08:45:41 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 04:57:30 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_write(t_info info, int length, char *s)
 {
@@ -30,16 +29,13 @@ int	ft_right_write(int length, char *s)
 	char	*out;
 	int		res;
 
-	s_len = ft_strlen(s);
-	space_len = length - s_len;
-	out = (char *)malloc((length + 1)*sizeof(char));
+	out = (char *)ft_calloc(length + 1, sizeof(char));
 	if (out == NULL)
 		return (-1);
-	out[length] = '\0';
-	while (s_len--)
-		out[space_len + s_len] = s[s_len];
-	while (space_len--)
-		out[space_len] = ' ';
+	s_len = ft_strlen(s);
+	space_len = length - s_len;
+	ft_memset(out, ' ', space_len);
+	ft_strlcat(out, s, length + 1);
 	res = write(1, out, length);
 	free(out);
 	return (res);
@@ -54,14 +50,11 @@ int	ft_left_write(int length, char *s)
 
 	s_len = ft_strlen(s);
 	space_len = length - s_len;
-	out = (char *)malloc((length + 1)*sizeof(char));
+	out = (char *)ft_calloc(length + 1, sizeof(char));
 	if (out == NULL)
 		return (-1);
-	out[length] = '\0';
-	while (space_len--)
-		out[s_len + space_len] = ' ';
-	while (s_len--)
-		out[s_len] = s[s_len];
+	ft_strlcpy(out, s, length + 1);
+	ft_memset(out + s_len, ' ', space_len);
 	res = write(1, out, length);
 	free(out);
 	return (res);
@@ -76,14 +69,11 @@ int	ft_zeropd_write(int length, char *s)
 
 	s_len = ft_strlen(s);
 	zero_len = length - s_len;
-	out = (char *)malloc((length + 1)*sizeof(char));
+	out = (char *)ft_calloc(length + 1, sizeof(char));
 	if (out == NULL)
 		return (-1);
-	out[length] = '\0';
-	while (s_len--)
-		out[zero_len + s_len] = s[s_len];
-	while (zero_len--)
-		out[zero_len] = '0';
+	ft_memset(out, '0', zero_len);
+	ft_strlcat(out, s, length + 1);
 	res = write(1, out, length);
 	free(out);
 	return (res);
