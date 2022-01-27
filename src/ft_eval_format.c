@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 04:50:22 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 04:51:36 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 06:04:34 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init_info(t_info *info)
 	info->space_flag = FALSE;
 	info->plus_flag = FALSE;
 	info->field_width = 0;
-	info->precision = 1;
+	info->precision = -1;
 	info->specifier = 0;
 }
 

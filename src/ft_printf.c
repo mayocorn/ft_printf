@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 04:59:00 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 05:02:02 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	ft_eval_format(const char **format, t_info *info)
 	ft_eval_specifier(format, info);
 }
 
-static int	ft_check_secifier(t_info info)
+static int	ft_check_specifier(t_info info)
 {
 	if (info.specifier == '%')
 		return (write(1, "%", 1));
 	else if (info.specifier == 'c')
 		return (ft_print_c(info));
 	else if (info.specifier == 's')
-	// 	return (ft_print_s(info));
+		return (ft_print_s(info));
 	// else if (info.specifier == 'p')
 	// 	return (ft_print_p(info));
 	// else if (info.specifier == 'd' || info.specifier == 'i')
@@ -37,7 +37,7 @@ static int	ft_check_secifier(t_info info)
 	// 	return (ft_print_u(info));
 	// else if (info.specifier == 'x' || info.specifier == 'X')
 	// 	return (ft_print_xX(info));
-	// else
+	else
 		return (-1);
 }
 
