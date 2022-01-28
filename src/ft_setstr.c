@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:08:41 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 04:04:53 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 04:36:39 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,4 @@ void	ft_setstr(t_info *info, char *s)
 		ft_setstr_zeroflag(info, s);
 	else
 		ft_setstr_nonflag(info, s);
-	info->str[info->buffer_size - 1] = '\0';
 }

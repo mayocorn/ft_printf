@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 03:56:21 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 04:38:30 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	ft_write(t_info *info)
 	ft_generate_str(info);
 	if (info->write_count == -1)
 		return ;
-	info->write_count = write(1, info->str, ft_strlen(info->str));
+	info->write_count = write(1, info->str, info->buffer_size);
 	free(info->str);
 }
 

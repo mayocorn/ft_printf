@@ -9,24 +9,24 @@ int main()
 	printf("%d\n",a);
 	printf("%d\n",b);
 	
-	puts("********************");
-	a=ft_printf("A%cA\n", 'a');
-	b=printf("A%cA\n", 'a');
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********************");
+	// a=ft_printf("A%cA\n", 'a');
+	// b=printf("A%cA\n", 'a');
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
 	
-	puts("********************");
-	a=ft_printf("A%-3cA\n", 'a');
-	b=printf("A%-3cA\n", 'a');
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********************");
+	// a=ft_printf("A%-3cA\n", 'a');
+	// b=printf("A%-3cA\n", 'a');
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
-	puts("********************");
-	a=ft_printf("A%.cA\n", 'a');
-	b=printf("A%.cA\n", 'a');
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********************");
+	// a=ft_printf("A%.cA\n", 'a');
+	// b=printf("A%.cA\n", 'a');
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
 	// puts("********************");
 	// a=ft_printf("A%#cA\n", 'a');
