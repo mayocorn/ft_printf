@@ -6,13 +6,13 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 07:26:43 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 07:46:22 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 08:14:28 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static size_t	ft_getdigit_hex(unsigned int n)
+static size_t	ft_getdigit_hex(unsigned long n)
 {
 	size_t	res;
 
@@ -26,7 +26,7 @@ static size_t	ft_getdigit_hex(unsigned int n)
 	return (res);
 }
 
-static void	ft_setnum_hex(char *dst_head, size_t index, unsigned int n)
+static void	ft_setnum_hex(char *dst_head, size_t index, unsigned long n)
 {
 	const char	order[] = "0123456789abcdef";
 	char		*dst;
@@ -37,7 +37,7 @@ static void	ft_setnum_hex(char *dst_head, size_t index, unsigned int n)
 	*dst = order[n % 16];
 }
 
-char	*ft_utohex(unsigned int n)
+char	*ft_utohex(unsigned long n)
 {
 	char	*res;
 	size_t	res_size;

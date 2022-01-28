@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 04:50:22 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 04:47:11 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 08:34:45 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_eval_flag(const char **format, t_info *info)
 		else if (**format == '+')
 			info->plus_flag = TRUE;
 		else
-			break;
+			break ;
 		(*format)++;
 	}
 }

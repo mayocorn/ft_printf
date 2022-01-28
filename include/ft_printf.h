@@ -34,7 +34,7 @@ void	ft_generate_s(t_info *info);
 void	ft_generate_p(t_info *info);
 void	ft_generate_di(t_info *info);
 void	ft_generate_u(t_info *info);
-void	ft_generate_xX(t_info *info);
+void	ft_generate_x(t_info *info);
 void	ft_setstr(t_info *info, char *s);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
@@ -42,5 +42,5 @@ size_t	ft_count_digit(int n);
 size_t	ft_count_digit_u(unsigned int n);
 size_t	ft_count_digit_h(unsigned int n);
 char	*ft_utoa(unsigned int n);
-char	*ft_utohex(unsigned int n);
+char	*ft_utohex(unsigned long n);
 #endif

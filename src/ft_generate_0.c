@@ -6,11 +6,10 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 05:15:16 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 08:36:21 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../include/ft_printf.h"
 
 void	ft_generate_c(t_info *info)
@@ -40,11 +39,27 @@ void	ft_generate_s(t_info *info)
 	ft_setstr(info, s);
 }
 
-// void	ft_generate_p(t_info *info)
-// {
+void	ft_generate_p(t_info *info)
+{
+	unsigned long	n;
+	char			*s;
 
-// }
-static void	ft_generate_di_sub(t_info *info,int n)
+	n = va_arg(info->args, unsigned long);
+	ft_strlcpy(info->prefix, "0x", 3);
+	info->s_len = ft_count_digit_h(n);
+	info->buffer_size = ft_max(info->field_width, info->s_len + 2);
+	info->space_len = info->buffer_size - info->s_len - 2;
+	s = ft_utohex(n);
+	if (s == NULL)
+	{
+		info->write_count = -1;
+		return ;
+	}
+	ft_setstr(info, s);
+	free(s);
+}
+
+static void	ft_generate_di_sub(t_info *info, int n)
 {
 	char	*s;
 
@@ -59,7 +74,6 @@ static void	ft_generate_di_sub(t_info *info,int n)
 	else
 		ft_setstr(info, s);
 	free(s);
-	
 }
 
 void	ft_generate_di(t_info *info)
@@ -87,4 +101,3 @@ void	ft_generate_di(t_info *info)
 	info->space_len = info->buffer_size - num_len;
 	ft_generate_di_sub(info, n);
 }
-

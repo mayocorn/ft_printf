@@ -99,8 +99,8 @@ int main()
 	//d,i
 
 	puts("********A%dA***********");
-	a=ft_printf("A%.01xA\n", 12);
-	b=printf("A%.01xA\n", 12);
+	a=ft_printf("A%pA\n", 12);
+	b=printf("A%010%A\n");
 	printf("%d\n",a);
 	printf("%d\n",b);
 	

@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 08:19:32 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 06:19:31 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 08:40:21 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_max(int a, int b)
 
 int	ft_min(int a, int b)
 {
-	if(a < b)
+	if (a < b)
 		return (a);
 	else
 		return (b);
