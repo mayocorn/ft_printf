@@ -25,10 +25,10 @@ void	ft_eval_precision(const char **format, t_info *info);
 void	ft_eval_specifier(const char **format, t_info *info);
 int		ft_print_c(t_info info);
 int		ft_print_s(t_info info);
-int		ft_write(t_info info, int length, char *s);
-int		ft_right_write(int length, char *s);
-int		ft_left_write(int length, char *s);
-int		ft_zeropd_write(int length, char *s);
+int		ft_right_write(size_t length, char *s);
+int		ft_left_write(size_t length, char *s);
+int		ft_zeropd_write(size_t length, char *s);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
+size_t	ft_count_digit(int n);
 #endif

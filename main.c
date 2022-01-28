@@ -16,11 +16,11 @@ int main()
 	// printf("%d\n",b);
 	
 	
-	puts("********************");
-	a=ft_printf("A%-3cA\n", 'a');
-	b=printf("A%-3cA\n", 'a');
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********************");
+	// a=ft_printf("A%-3cA\n", 'a');
+	// b=printf("A%-3cA\n", 'a');
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
 	// puts("********************");
 	// a=ft_printf("A%.cA\n", 'a');
@@ -78,16 +78,73 @@ int main()
 	// printf("%d\n",a);
 	// printf("%d\n",b);
 	
-	// puts("*********%08s***********");
-	// a=ft_printf("A%08sA\n", "HELLO");
-	// b=printf("A%08sA\n", "HELLO");
+	// puts("*********%-8s***********");
+	// a=ft_printf("A%-8sA\n", "HELLO");
+	// b=printf("A%-8sA\n", "HELLO");
 	// printf("%d\n",a);
 	// printf("%d\n",b);
 	
 	// puts("*********%.s***********");
 	// a=ft_printf("A%.sA\n", "HELLO");
-	// b=printf("A%.-1sA\n", "HELLO");
+	// b=printf("A%.sA\n", "HELLO");
 	// printf("%d\n",a);
 	// printf("%d\n",b);
+	
+	// puts("*********%.1s***********");
+	// a=ft_printf("A%.1sA\n", "HELLO");
+	// b=printf("A%.1sA\n", "HELLO");
+	// printf("%d\n",a);
+	// printf("%d\n",b);
+	
+	//d,i
+
+	puts("********A%sA************");
+	a=ft_printf("A%dA\n", 12);
+	b=printf("A%dA\n", 12);
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("********A%3sA************");
+	a=ft_printf("A%3sA\n", "HELLO");
+	b=printf("A%3sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("*********A%5sA***********");
+	a=ft_printf("A%5sA\n", "HELLO");
+	b=printf("A%5sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("********A%6A************");
+	a=ft_printf("A%6sA\n", "HELLO");
+	b=printf("A%6sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("********A%03sA************");
+	a=ft_printf("A%03sA\n", "HELLO");
+	b=printf("A%03sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("*********%-8s***********");
+	a=ft_printf("A%-8sA\n", "HELLO");
+	b=printf("A%-8sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("*********%.s***********");
+	a=ft_printf("A%.sA\n", "HELLO");
+	b=printf("A%.sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
+	puts("*********%.1s***********");
+	a=ft_printf("A%.1sA\n", "HELLO");
+	b=printf("A%.1sA\n", "HELLO");
+	printf("%d\n",a);
+	printf("%d\n",b);
+	
 	return 0;
 }
