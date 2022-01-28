@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 08:38:36 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:29:32 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_print_di(t_info info)
 		length = ft_max(ft_count_digit(n), 1);
 	else
 		length = ft_max(ft_count_digit(n), info.precision);
-	s = ft_trim_numbre(info, n, length);
+	s = ft_trim_number(info, n, length);
 	if (s == NULL)
 		return (-1);
 	length = ft_max(ft_strlen(s), info.field_width);

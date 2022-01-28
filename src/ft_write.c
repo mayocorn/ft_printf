@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 07:42:52 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 09:27:18 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:28:57 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,20 @@ int	ft_zeropd_write(size_t length, char *s)
 	return (res);
 }
 
+static char	*ft_trim_number_sub(char *s, int n)
+{
+	char	*res;
+
+	if (n == 0)
+		return (s);
+	res = ft_trim_number_sub(s, n / 10);
+	*res = n % 10;
+	if (*res < 0)
+		*res *= -1;
+	*res += '0';
+	return (res + 1);
+}
+
 char	*ft_trim_number(t_info info, int n, size_t length)
 {
 	char	*res;
@@ -98,24 +112,10 @@ char	*ft_trim_number(t_info info, int n, size_t length)
 		res[index++] = '+';
 	else if (info.space_flag == TRUE)
 		res[index++] = ' ';
-	zero_len = length - ft_count_difit(n);
+	zero_len = length - ft_count_digit(n);
 	while (zero_len--)
 		res[index++] = '0';
 	ft_trim_number_sub(&res[index], n);
 	res[res_size] = '\0';
 	return (res);
-}
-
-char	*ft_trim_number_sub(char *s, int n)
-{
-	char	*res;
-
-	if (n == 0)
-		return (s);
-	res = ft_trim_number_sub(s, n / 10);
-	*res = n % 10;
-	if (*res < 0)
-		*res *= -1;
-	*res += '0';
-	return (res + 1);
 }
