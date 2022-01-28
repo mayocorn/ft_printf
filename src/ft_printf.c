@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 11:22:32 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 01:38:31 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,33 @@ static void	ft_eval_format(const char **format, t_info *info)
 	ft_eval_specifier(format, info);
 }
 
-static int	ft_check_specifier(t_info *info)
+static void	ft_generate_str(t_info *info)
 {
-	if (info->specifier == '%')
-		return (write(1, "%", 1));
-	else if (info->specifier == 'c')
-		return (ft_print_c(info));
+	if (info->specifier == 'c')
+		ft_generate_c(info);
 	else if (info->specifier == 's')
-		return (ft_print_s(info));
-	// else if (info->specifier == 'p')
-	// 	return (ft_print_p(info));
+		ft_generate_s(info);
+	else if (info->specifier == 'p')
+		ft_generate_p(info);
 	else if (info->specifier == 'd' || info->specifier == 'i')
-		return (ft_print_di(info));
+		ft_generate_di(info);
 	else if (info->specifier == 'u')
-		return (ft_print_u(info));
-	// else if (info->specifier == 'x' || info->specifier == 'X')
-	// 	return (ft_print_xX(info));
+		ft_generate_u(info);
+	else if (info->specifier == 'x' || info->specifier == 'X')
+		ft_generate_xX(info);
+	if (info->specifier == '%')
+		ft_generate_pc(info);
 	else
-		return (-1);
+		info->write_count = -1;
+}
+
+static void	ft_write(t_info *info)
+{
+	ft_generate_str(info);
+	if (info->write_count == -1)
+		return ;
+	info->write_count = write(1, info->str, ft_strlen(info->str));
+	free(info->str);
 }
 
 int	ft_printf(const char *format, ...)
@@ -55,7 +64,8 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			ft_eval_format(&format, &info);
-			result = ft_check_specifier(&info);
+			ft_write(&info);
+			result = info.write_count;
 		}
 		else
 			result = write(1, format, 1);

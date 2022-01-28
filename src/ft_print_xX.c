@@ -1,58 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_x2.c                                      :+:      :+:    :+:   */
+/*   ft_print_xX.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 01:45:52 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 11:52:44 by stsunoda         ###   ########.fr       */
+/*   Created: 2022/01/28 12:01:35 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/01/28 12:07:48 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
-static char	*ft_trim_u_sub(char *s, unsigned int n)
-{
-	char	*res;
-
-	if (n == 0)
-		return (s);
-	res = ft_trim_u_sub(s, n / 10);
-	*res = n % 10 + '0';
-	return (res + 1);
-}
-
-static char	*ft_trim_u(unsigned int n, size_t length)
-{
-	char	*res;
-	size_t	zero_len;
-	size_t	index;
-	
-	res = (char *)malloc((length + 1) * sizeof(char));
-	if (res == NULL)
-		return (NULL);
-	zero_len = length - ft_count_digit_u(n);
-	index = 0;
-	while (zero_len--)
-		res[index++] = '0';
-	ft_trim_u_sub(&res[index], n);
-	res[length] = '\0';
-	return (res);
-}
-
-int	ft_print_u(t_info *info)
+int	ft_print_xX(t_info *info)
 {
 	int				res;
 	unsigned int	n;
 	size_t			length;
 	char			*s;
-
+	
 	n = va_arg(info->args, unsigned int);
 	if (info->precision < 0)
-		length = ft_max(ft_count_digit_u(n), 1);
+		length = ft_max(ft_count_digit_xX(n), 1);
 	else
-		length = ft_max(ft_count_digit_u(n), info->precision);
+		length = ft_max(ft_count_digit_xX(n), info->precision);
 	s = ft_trim_u(n, length);
 	if (s == NULL)
 		return (-1);
@@ -66,8 +37,3 @@ int	ft_print_u(t_info *info)
 	free(s);
 	return (res);
 }
-
-// int	ft_printf_xX(t_info info)
-// {
-
-// }

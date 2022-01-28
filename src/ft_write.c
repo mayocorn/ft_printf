@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 07:42:52 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 11:44:12 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 00:34:40 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int	ft_right_write(size_t length, char *s)
 	res = write(1, out, length);
 	free(out);
 	return (res);
+	
+	
+	res ft_memset();
 }
 
 int	ft_left_write(size_t length, char *s)

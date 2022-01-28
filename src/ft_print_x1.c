@@ -6,47 +6,51 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 11:21:47 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 02:07:50 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../include/ft_printf.h"
 
-int	ft_print_c(t_info *info)
+void	ft_generate_c(t_info *info)
 {
-	size_t	length;
-	char	s[2];
+	char	*s;
 
-	length = ft_max(1, info->field_width);
-	s[0] = (char)va_arg(info->args, int);
-	s[1] = '\0';
-	if (s[0] == '\0')
-		return (ft_print_c_zero(info, length));
-	if (info->minus_flag == TRUE)
-		return (ft_left_write(length, s));
-	return (ft_right_write(length, s));
+	info->s_len = 1;
+	info->buffer_size = ft_max(1, info->field_width) + 1;
+	info->space_len = info->buffer_size - info->s_len - 1;
+	info->zero_flag = FALSE;
+	s = (char *)calloc(2, sizeof(char));
+	if (s == NULL)
+	{
+		info->write_count = -1;
+		return ;
+	}
+	*s = (char)va_arg(info->args, int);
+	ft_setstr(info, s);
+	free(s);
 }
 
-int	ft_print_c_zero(t_info *info, size_t length)
-{
-	int	res;
+// int	ft_print_c_zero(t_info *info, size_t length)
+// {
+// 	int	res;
 
-	res = 0;
-	if (info->minus_flag == TRUE)
-	{
-		res += write(1,"", 1);
-		while (--length)
-			res += write(1, " ", 1);
-	}
-	else
-	{
-		while (--length)
-			res += write(1, " ", 1);
-		res += write(1, "", 1);
-	}
-	return (res);
-}
+// 	res = 0;
+// 	if (info->minus_flag == TRUE)
+// 	{
+// 		res += write(1,"", 1);
+// 		while (--length)
+// 			res += write(1, " ", 1);
+// 	}
+// 	else
+// 	{
+// 		while (--length)
+// 			res += write(1, " ", 1);
+// 		res += write(1, "", 1);
+// 	}
+// 	return (res);
+// }
 
 int	ft_print_s(t_info *info)
 {
