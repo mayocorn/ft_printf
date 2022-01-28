@@ -42,5 +42,5 @@ size_t	ft_count_digit(int n);
 size_t	ft_count_digit_u(unsigned int n);
 size_t	ft_count_digit_h(unsigned int n);
 char	*ft_utoa(unsigned int n);
-char	*ft_utohex(unsigned int n)
+char	*ft_utohex(unsigned int n);
 #endif

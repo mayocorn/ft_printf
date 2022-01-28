@@ -6,12 +6,12 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 05:29:42 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 07:26:21 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 07:54:32 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
+#include <stdio.h>
 
 void	ft_generate_u(t_info *info)
 {
@@ -77,7 +77,7 @@ void	ft_generate_xX(t_info *info)
 		info->s_len = ft_max(ft_count_digit_h(n), 1);
 	else
 	{
-		info->s_len = ft_count_digit_u(n);
+		info->s_len = ft_count_digit_h(n);
 		info->zero_flag = FALSE;
 		info->zero_len = ft_max(info->precision, info->s_len) - info->s_len;
 	}
