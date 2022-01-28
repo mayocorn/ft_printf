@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 03:54:54 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 04:10:08 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_generate_s(t_info *info)
 		info->s_len = ft_min(ft_strlen(s), info->precision);
 	info->field_width = ft_max(info->s_len, info->field_width);
 	info->buffer_size = (size_t)info->field_width + 1;
+	info->space_len = info->buffer_size - info->s_len - 1;
 	info->zero_flag = FALSE;
 	t = ft_substr(s, 0, info->s_len);
 	if (t == NULL)
