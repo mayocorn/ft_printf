@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 01:38:31 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 03:56:21 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ static void	ft_generate_str(t_info *info)
 		ft_generate_c(info);
 	else if (info->specifier == 's')
 		ft_generate_s(info);
-	else if (info->specifier == 'p')
-		ft_generate_p(info);
-	else if (info->specifier == 'd' || info->specifier == 'i')
-		ft_generate_di(info);
-	else if (info->specifier == 'u')
-		ft_generate_u(info);
-	else if (info->specifier == 'x' || info->specifier == 'X')
-		ft_generate_xX(info);
-	if (info->specifier == '%')
-		ft_generate_pc(info);
+	// else if (info->specifier == 'p')
+	// 	ft_generate_p(info);
+	// else if (info->specifier == 'd' || info->specifier == 'i')
+	// 	ft_generate_di(info);
+	// else if (info->specifier == 'u')
+	// 	ft_generate_u(info);
+	// else if (info->specifier == 'x' || info->specifier == 'X')
+	// 	ft_generate_xX(info);
+	// if (info->specifier == '%')
+	// 	ft_generate_pc(info);
 	else
 		info->write_count = -1;
 }

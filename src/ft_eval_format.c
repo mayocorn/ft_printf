@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 04:50:22 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 02:07:12 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 03:00:20 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_init_info(t_info *info)
 	info->specifier = 0;
 	info->str = 0;
 	info->buffer_size = 0;
-	info->prefix = 0;
+	ft_bzero(info->prefix, 3);
 	info->s_len = 0;
 	info->space_len = 0;
 	info->zero_len = 0;

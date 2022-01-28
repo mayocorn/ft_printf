@@ -139,6 +139,6 @@ int main()
 	// b=printf("A%3.dA\n", 0);
 	// printf("%d\n",a);
 	// printf("%d\n",b);
-	
+	t_info info;
 	return 0;
 }
