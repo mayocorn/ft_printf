@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 11:09:49 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:21:47 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,3 @@ int	ft_print_di(t_info *info)
 	return (res);
 }
 
-// int	ft_print_u(t_info info)
-// {
-
-// }

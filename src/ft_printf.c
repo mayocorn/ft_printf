@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 10:19:48 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:22:32 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	ft_check_specifier(t_info *info)
 	// 	return (ft_print_p(info));
 	else if (info->specifier == 'd' || info->specifier == 'i')
 		return (ft_print_di(info));
-	// else if (info->specifier == 'u')
-	// 	return (ft_print_u(info));
+	else if (info->specifier == 'u')
+		return (ft_print_u(info));
 	// else if (info->specifier == 'x' || info->specifier == 'X')
 	// 	return (ft_print_xX(info));
 	else

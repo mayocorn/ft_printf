@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 08:19:32 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 07:32:05 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:27:57 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ int	ft_min(int a, int b)
 }
 
 size_t	ft_count_digit(int n)
+{
+	size_t	res;
+
+	res = 0;
+	while (n)
+	{
+		n /= 10;
+		res++;
+	}
+	return (res);
+}
+
+size_t	ft_count_digit_u(unsigned int n)
 {
 	size_t	res;
 

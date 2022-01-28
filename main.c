@@ -97,7 +97,8 @@ int main()
 	// printf("%d\n",b);
 	
 	//d,i
-	printf("%d\n",printf("%-2ca\n",0));
+	printf("%.u\n",10);
+	ft_printf("%.u\n",10);
 	printf("%d\n",ft_printf("%-2ca\n",0));
 	// puts("********A%dA***********");
 	// a=ft_printf("A%.01dA\n", 12);
