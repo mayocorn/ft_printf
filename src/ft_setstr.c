@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:08:41 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 04:36:39 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 05:23:07 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ static void	ft_setstr_minusflag(t_info *info, char *s)
 	prefix = info->prefix;
 	while (*prefix != '\0')
 		*(str++) = *(prefix++);
+	ft_memset(str, '0', info->zero_len);
+	str += info->zero_len;
 	ft_memcpy(str, s, info->s_len);
-	ft_memset(str + info->s_len, ' ', info->space_len);
+	str += info->s_len;
+	ft_memset(str, ' ', info->space_len);
 }
 
 static void	ft_setstr_zeroflag(t_info *info, char *s)
@@ -49,6 +52,8 @@ static void	ft_setstr_nonflag(t_info *info, char *s)
 	str += info->space_len;
 	while (*prefix != '\0')
 		*(str++) = *(prefix++);
+	ft_memset(str, '0', info->zero_len);
+	str += info->zero_len;
 	ft_memcpy(str, s, info->s_len);
 }
 
