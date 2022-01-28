@@ -23,6 +23,7 @@ void	ft_eval_field_width(const char **format, t_info *info);
 void	ft_eval_precision(const char **format, t_info *info);
 void	ft_eval_specifier(const char **format, t_info *info);
 int		ft_print_c(t_info *info);
+int		ft_print_c_zero(t_info *info, size_t length);
 int		ft_print_s(t_info *info);
 int		ft_print_di(t_info *info);
 int		ft_right_write(size_t length, char *s);

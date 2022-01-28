@@ -97,10 +97,8 @@ int main()
 	// printf("%d\n",b);
 	
 	//d,i
-	
-	printf("%c\n",0);
- 	printf(" %c%c%c \n", '1', '2', '1');
- 	ft_printf(" %c%c%c \n", '1', '2', '1');
+	printf("%d\n",printf("%-2ca\n",0));
+	printf("%d\n",ft_printf("%-2ca\n",0));
 	// puts("********A%dA***********");
 	// a=ft_printf("A%.01dA\n", 12);
 	// b=printf("A%.01dA\n", 12);

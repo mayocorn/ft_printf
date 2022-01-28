@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 07:42:52 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/28 09:28:57 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:01:12 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char	*ft_trim_number_sub(char *s, int n)
 	return (res + 1);
 }
 
-char	*ft_trim_number(t_info info, int n, size_t length)
+char	*ft_trim_number(t_info *info, int n, size_t length)
 {
 	char	*res;
 	size_t 	index;
@@ -100,7 +100,7 @@ char	*ft_trim_number(t_info info, int n, size_t length)
 	size_t 	zero_len;
 
 	res_size = length;
-	if (n < 0 || info.plus_flag == TRUE || info.space_flag == TRUE)
+	if (n < 0 || info->plus_flag == TRUE || info->space_flag == TRUE)
 		res_size++;
 	res = (char *)malloc((res_size + 1) * sizeof(char));
 	if (res == NULL)
@@ -108,9 +108,9 @@ char	*ft_trim_number(t_info info, int n, size_t length)
 	index = 0;
 	if (n < 0)
 		res[index++] = '-';
-	else if (info.plus_flag == TRUE)
+	else if (info->plus_flag == TRUE)
 		res[index++] = '+';
-	else if (info.space_flag == TRUE)
+	else if (info->space_flag == TRUE)
 		res[index++] = ' ';
 	zero_len = length - ft_count_digit(n);
 	while (zero_len--)
