@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 08:19:32 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 06:19:31 by stsunoda         ###   ########.fr       */
+/*   Created: 2022/01/29 05:49:21 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/01/29 07:39:52 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-int	ft_min(int a, int b)
-{
-	if(a < b)
-		return (a);
-	else
-		return (b);
-}
-
-size_t	ft_count_digit(int n)
+static size_t	ft_getdigit(unsigned int n)
 {
 	size_t	res;
 
-	res = 0;
+	res = 1;
+	n /= 10;
 	while (n)
 	{
 		n /= 10;
@@ -41,28 +26,26 @@ size_t	ft_count_digit(int n)
 	return (res);
 }
 
-size_t	ft_count_digit_u(unsigned int n)
+static void	ft_setnum(char *dst_head, size_t index, unsigned int n)
 {
-	size_t	res;
+	char	*dst;
 
-	res = 0;
-	while (n)
-	{
-		n /= 10;
-		res++;
-	}
-	return (res);
+	if (index != 0)
+		ft_setnum(dst_head, index - 1, n / 10);
+	dst = dst_head + index;
+	*dst = (n % 10) + '0';
 }
 
-size_t	ft_count_digit_h(unsigned int n)
+char	*ft_utoa(unsigned int n)
 {
-	size_t	res;
+	char	*res;
+	size_t	res_size;
 
-	res = 0;
-	while (n)
-	{
-		n /= 16;
-		res++;
-	}
+	res_size = ft_getdigit(n);
+	res = (char *)malloc((res_size + 1) * sizeof(char));
+	if (res == NULL)
+		return (NULL);
+	ft_setnum(res, res_size - 1, n);
+	*(res + res_size) = 0;
 	return (res);
 }
