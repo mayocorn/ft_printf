@@ -97,46 +97,49 @@ int main()
 	// printf("%d\n",b);
 	
 	//d,i
-
-	puts("********A%dA***********");
-	a=ft_printf("A%.01dA\n", 12);
-	b=printf("A%.01dA\n", 12);
-	printf("%d\n",a);
-	printf("%d\n",b);
 	
-	puts("********A%4dA***********");
-	a=ft_printf("A%4dA\n", 12);
-	b=printf("A%4dA\n", 12);
-	printf("%d\n",a);
-	printf("%d\n",b);
+	printf("%c\n",0);
+ 	printf(" %c%c%c \n", '1', '2', '1');
+ 	ft_printf(" %c%c%c \n", '1', '2', '1');
+	// puts("********A%dA***********");
+	// a=ft_printf("A%.01dA\n", 12);
+	// b=printf("A%.01dA\n", 12);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
-	puts("********A%dA***********");
-	a=ft_printf("A%.dA\n", 0);
-	b=printf("A%.dA\n", 0);
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********A%4dA***********");
+	// a=ft_printf("A%4dA\n", 12);
+	// b=printf("A%4dA\n", 12);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
-	puts("********A%dA***********");
-	a=ft_printf("A%6.5dA\n", 12);
-	b=printf("A%6.5dA\n", 12);
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********A%dA***********");
+	// a=ft_printf("A%.dA\n", 0);
+	// b=printf("A%.dA\n", 0);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
-	puts("********A%dA***********");
-	a=ft_printf("A%5dA\n", -12);
-	b=printf("A%5dA\n", -12);
-	printf("%d\n",a);
-	printf("%d\n",b);
-	puts("********A%dA***********");
-	a=ft_printf("A%.5dA\n", -12);
-	b=printf("A%.5dA\n", -12);
-	printf("%d\n",a);
-	printf("%d\n",b);
-	puts("********A%dA***********");
-	a=ft_printf("A%3.dA\n", 0);
-	b=printf("A%3.dA\n", 0);
-	printf("%d\n",a);
-	printf("%d\n",b);
+	// puts("********A%dA***********");
+	// a=ft_printf("A%6.5dA\n", 12);
+	// b=printf("A%6.5dA\n", 12);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
+	
+	// puts("********A%dA***********");
+	// a=ft_printf("A%5dA\n", -12);
+	// b=printf("A%5dA\n", -12);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
+	// puts("********A%dA***********");
+	// a=ft_printf("A%.5dA\n", -12);
+	// b=printf("A%.5dA\n", -12);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
+	// puts("********A%dA***********");
+	// a=ft_printf("A%3.dA\n", 0);
+	// b=printf("A%3.dA\n", 0);
+	// printf("%d\n",a);
+	// printf("%d\n",b);
 	
 	return 0;
 }
