@@ -100,8 +100,8 @@ int main()
 
 #include <limits.h>
 	puts("********A%dA***********");
-	a=printf(" %p %p a\n", LONG_MIN, LONG_MAX);
-	b=ft_printf(" %p %p a\n", LONG_MIN, LONG_MAX);
+	a=printf(" %p %p ", 0, 0);
+	b=ft_printf(" %p %p ", 0, 0);
 //	b=ft_printf(" NULL %s NULL ", NULL);
 	printf("%d\n",a);
 	printf("%d\n",b);
