@@ -40,7 +40,7 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 size_t	ft_count_digit(int n);
 size_t	ft_count_digit_u(unsigned int n);
-size_t	ft_count_digit_h(unsigned int n);
+size_t	ft_count_digit_h(unsigned long n);
 char	*ft_utoa(unsigned int n);
 char	*ft_utohex(unsigned long n);
 #endif

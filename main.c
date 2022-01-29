@@ -98,9 +98,11 @@ int main()
 	
 	//d,i
 
+#include <limits.h>
 	puts("********A%dA***********");
-	a=ft_printf("A%pA\n", 12);
-	b=printf("A%010%A\n");
+	a=printf(" %p %p a\n", LONG_MIN, LONG_MAX);
+	b=ft_printf(" %p %p a\n", LONG_MIN, LONG_MAX);
+//	b=ft_printf(" NULL %s NULL ", NULL);
 	printf("%d\n",a);
 	printf("%d\n",b);
 	

@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 08:19:32 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 08:40:21 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 09:33:24 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ size_t	ft_count_digit_u(unsigned int n)
 	return (res);
 }
 
-size_t	ft_count_digit_h(unsigned int n)
+size_t	ft_count_digit_h(unsigned long n)
 {
 	size_t	res;
 

@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 08:38:57 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 09:20:43 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_eval_format(const char **format, t_info *info)
 	ft_eval_specifier(format, info);
 }
 
-static void	ft_generate_str(t_info *info)
+static void	ft_write(t_info *info)
 {
 	if (info->specifier == 'c')
 		ft_generate_c(info);
@@ -36,14 +36,12 @@ static void	ft_generate_str(t_info *info)
 	else if (info->specifier == 'x' || info->specifier == 'X')
 		ft_generate_x(info);
 	else if (info->specifier == '%')
+	{
 		info->write_count = write(1, "%", 1);
+		return ;
+	}
 	else
 		info->write_count = -1;
-}
-
-static void	ft_write(t_info *info)
-{
-	ft_generate_str(info);
 	if (info->write_count == -1)
 		return ;
 	info->write_count = write(1, info->str, info->buffer_size);
