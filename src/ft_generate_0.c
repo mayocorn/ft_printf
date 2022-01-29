@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 09:47:32 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 10:24:34 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ void	ft_generate_s(t_info *info)
 	char	*s;
 
 	s = va_arg(info->args, char *);
+	if (s == NULL)
+		s = ft_strdup("(null)");
+	else
+		s = ft_strdup(s);
+	if (s == NULL)
+	{
+		info->write_count = -1;
+		return ;
+	}
 	if (info->precision < 0)
 		info->s_len = ft_strlen(s);
 	else
@@ -37,6 +46,7 @@ void	ft_generate_s(t_info *info)
 	info->space_len = info->buffer_size - info->s_len;
 	info->zero_flag = FALSE;
 	ft_setstr(info, s);
+	free(s);
 }
 
 void	ft_generate_p(t_info *info)

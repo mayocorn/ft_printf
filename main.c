@@ -4,9 +4,9 @@
 int main()
 {
 	int a,b;
-	a=ft_printf("123\n");
-	b=printf("123\n");
-	printf("%d\n",a);
+	// a=ft_printf("%s\n",NULL);
+	b=printf("%s\n",NULL);
+	// printf("%d\n",a);
 	printf("%d\n",b);
 	
 	// puts("********************");
