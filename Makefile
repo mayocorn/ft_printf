@@ -6,14 +6,14 @@
 #    By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 05:33:16 by stsunoda          #+#    #+#              #
-#    Updated: 2022/01/29 08:33:46 by stsunoda         ###   ########.fr        #
+#    Updated: 2022/01/30 01:02:33 by stsunoda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCDIR	= ./src
-SRC = ft_printf.c ft_eval_format.c ft_generate_0.c ft_generate_1.c ft_setstr.c \
-		ft_utoa.c ft_utohex.c ft_utils.c
+SRC = ft_printf.c ft_eval_format.c ft_generate_0.c ft_generate_1.c \
+		 ft_setstr.c ft_utoa.c ft_utohex.c ft_utils.c
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(SRCDIR)/, $(notdir $(SRCS:.c=.o)))
 LIBFT = libft
