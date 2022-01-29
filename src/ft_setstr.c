@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:08:41 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 07:59:23 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/30 00:18:36 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,12 @@ void	ft_setstr(t_info *info, char *s)
 		ft_setstr_zeroflag(info, s);
 	else
 		ft_setstr_nonflag(info, s);
+}
+
+void	ft_setinfo(t_info *info)
+{
+	info->buffer_size = ft_max(info->field_width, \
+							ft_strlen(info->prefix) + info->zero_len + info->s_len);
+	info->space_len = info->buffer_size - \
+						(ft_strlen(info->prefix) + info->zero_len + info->s_len);
 }

@@ -6,13 +6,14 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 09:48:38 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 09:49:04 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/30 00:28:59 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
+# include <limits.h>
 # include "../libft/libft.h"
 # define TRUE 1
 # define FALSE 0
@@ -28,12 +29,12 @@ typedef struct s_info
 	int		precision;
 	char	specifier;
 	va_list	args;
-	char	*str;
-	size_t	buffer_size;
-	char	prefix[3];
 	size_t	s_len;
+	char	prefix[3];
+	size_t	buffer_size;
 	size_t	space_len;
 	size_t	zero_len;
+	char	*str;
 	int		write_count;
 }	t_info;
 int		ft_printf(const char *format, ...);
@@ -48,6 +49,7 @@ void	ft_generate_p(t_info *info);
 void	ft_generate_di(t_info *info);
 void	ft_generate_u(t_info *info);
 void	ft_generate_x(t_info *info);
+void	ft_setinfo(t_info *info);
 void	ft_setstr(t_info *info, char *s);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);

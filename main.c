@@ -100,8 +100,8 @@ int main()
 
 #include <limits.h>
 	puts("********A%dA***********");
-	a=printf(" %p %p ", 0, 0);
-	b=ft_printf(" %p %p ", 0, 0);
+	a=printf("%.03s\n","HELLO");
+	b=ft_printf("%.03s\n","HELLO");
 //	b=ft_printf(" NULL %s NULL ", NULL);
 	printf("%d\n",a);
 	printf("%d\n",b);

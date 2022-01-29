@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 09:20:43 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/29 23:52:06 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 			result = write(1, format, 1);
-		if (result == -1)
+		if (result == -1 || INT_MAX - ret < result)
 			return (-1);
 		ret += result;
 		format++;

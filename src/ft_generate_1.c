@@ -6,7 +6,7 @@
 /*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 05:29:42 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 08:39:46 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/01/30 00:30:26 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	ft_generate_u(t_info *info)
 	char			*s;
 
 	n = va_arg(info->args, int);
+	s = ft_utoa(n);
+	if (s == NULL)
+	{
+		info->write_count = -1;
+		return ;
+	}
 	if (info->precision < 0)
 		info->s_len = ft_max(ft_count_digit_u(n), 1);
 	else
@@ -26,14 +32,7 @@ void	ft_generate_u(t_info *info)
 		info->zero_flag = FALSE;
 		info->zero_len = ft_max(info->precision, info->s_len) - info->s_len;
 	}
-	info->buffer_size = ft_max(info->field_width, info->s_len + info->zero_len);
-	info->space_len = info->buffer_size - info->s_len - info->zero_len;
-	s = ft_utoa(n);
-	if (s == NULL)
-	{
-		info->write_count = -1;
-		return ;
-	}
+	ft_setinfo(info);
 	ft_setstr(info, s);
 	free(s);
 }
@@ -62,7 +61,6 @@ static void	ft_generate_x_sub(t_info *info, unsigned int n)
 void	ft_generate_x(t_info *info)
 {
 	unsigned int	n;
-	size_t			num_len;
 
 	n = va_arg(info->args, int);
 	if (info->sharp_flag == TRUE && n != 0)
@@ -80,8 +78,6 @@ void	ft_generate_x(t_info *info)
 		info->zero_flag = FALSE;
 		info->zero_len = ft_max(info->precision, info->s_len) - info->s_len;
 	}
-	num_len = info->s_len + info->zero_len + ft_strlen(info->prefix);
-	info->buffer_size = ft_max(info->field_width, num_len);
-	info->space_len = info->buffer_size - num_len;
+	ft_setinfo(info);
 	ft_generate_x_sub(info, n);
 }
