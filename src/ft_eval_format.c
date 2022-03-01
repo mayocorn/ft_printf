@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_eval_format.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 04:50:22 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 08:34:45 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:42:56 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_init_info(t_info *info)
 {
-	info->minus_flag = FALSE;
-	info->zero_flag = FALSE;
-	info->sharp_flag = FALSE;
-	info->space_flag = FALSE;
-	info->plus_flag = FALSE;
+	info->minus_flag = false;
+	info->zero_flag = false;
+	info->sharp_flag = false;
+	info->space_flag = false;
+	info->plus_flag = false;
 	info->field_width = 0;
 	info->precision = -1;
 	info->specifier = 0;
@@ -36,15 +36,15 @@ void	ft_eval_flag(const char **format, t_info *info)
 	while (1)
 	{
 		if (**format == '-')
-			info->minus_flag = TRUE;
+			info->minus_flag = true;
 		else if (**format == '0')
-			info->zero_flag = TRUE;
+			info->zero_flag = true;
 		else if (**format == '#')
-			info->sharp_flag = TRUE;
+			info->sharp_flag = true;
 		else if (**format == ' ')
-			info->space_flag = TRUE;
+			info->space_flag = true;
 		else if (**format == '+')
-			info->plus_flag = TRUE;
+			info->plus_flag = true;
 		else
 			break ;
 		(*format)++;
@@ -53,17 +53,29 @@ void	ft_eval_flag(const char **format, t_info *info)
 
 void	ft_eval_field_width(const char **format, t_info *info)
 {
-	info->field_width = ft_atoi(*format);
+	int result;
+
+	result = ft_atoi2(*format);
+	if (result == ERROR)
+		info->write_count = ERROR;
+	else
+		info->field_width = result;
 	while (ft_isdigit(**format))
 		(*format)++;
 }
 
 void	ft_eval_precision(const char **format, t_info *info)
 {
+	int	result;
+
 	if (**format != '.')
 		return ;
 	(*format)++;
-	info->precision = ft_atoi(*format);
+	result = ft_atoi2(*format);
+	if (result == ERROR)
+		info->write_count = ERROR;
+	else
+		info->precision = result;
 	while (ft_isdigit(**format))
 		(*format)++;
 }

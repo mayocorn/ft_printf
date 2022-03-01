@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_setstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:08:41 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/30 00:34:32 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:02:42 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,14 @@ void	ft_setstr(t_info *info, char *s)
 
 void	ft_setinfo(t_info *info)
 {
-	info->buffer_size = ft_max(info->field_width, \
-					ft_strlen(info->prefix) + info->zero_len + info->s_len);
-	info->space_len = info->buffer_size - \
-					(ft_strlen(info->prefix) + info->zero_len + info->s_len);
+	size_t	entity_len;
+
+	entity_len = ft_strlen(info->prefix) + info->zero_len + info->s_len;
+	if (INT_MAX < entity_len)
+	{
+		info->write_count = ERROR;
+		return ;
+	}
+	info->buffer_size = ft_max(info->field_width, entity_len);
+	info->space_len = info->buffer_size - entity_len;
 }

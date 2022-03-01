@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 23:52:06 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:33:52 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static void	ft_write(t_info *info)
 	else if (info->specifier == 'x' || info->specifier == 'X')
 		ft_generate_x(info);
 	else if (info->specifier == '%')
-	{
-		info->write_count = write(1, "%", 1);
-		return ;
-	}
+		ft_generate_ps(info);
 	else
 		info->write_count = -1;
 	if (info->write_count == -1)
@@ -48,22 +45,21 @@ static void	ft_write(t_info *info)
 	free(info->str);
 }
 
-int	ft_printf(const char *format, ...)
+static int	ft_parse_format(const char *format, t_info *info)
 {
-	int		ret;
-	int		result;
-	t_info	info;
+	int	result;
+	int	ret;
 
 	ret = 0;
-	va_start(info.args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			ft_eval_format(&format, &info);
-			ft_write(&info);
-			result = info.write_count;
+			ft_eval_format(&format, info);
+			if (info->write_count != ERROR)
+				ft_write(info);
+			result = info->write_count;
 		}
 		else
 			result = write(1, format, 1);
@@ -72,6 +68,16 @@ int	ft_printf(const char *format, ...)
 		ret += result;
 		format++;
 	}
+	return (ret);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int		ret;
+	t_info	info;
+
+	va_start(info.args, format);
+	ret = ft_parse_format(format, &info);
 	va_end(info.args);
 	return (ret);
 }

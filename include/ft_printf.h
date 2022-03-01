@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 09:48:38 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/30 00:28:59 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:06:47 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <limits.h>
+# include <stdbool.h>
 # include "../libft/libft.h"
-# define TRUE 1
-# define FALSE 0
+# define ERROR -1
 
 typedef struct s_info
 {
-	int		minus_flag;
-	int		zero_flag;
-	int		sharp_flag;
-	int		space_flag;
-	int		plus_flag;
+	bool	minus_flag;
+	bool	zero_flag;
+	bool	sharp_flag;
+	bool	space_flag;
+	bool	plus_flag;
 	int		field_width;
 	int		precision;
 	char	specifier;
 	va_list	args;
-	size_t	s_len;
+	int		s_len;
 	char	prefix[3];
-	size_t	buffer_size;
-	size_t	space_len;
-	size_t	zero_len;
+	int		buffer_size;
+	int		space_len;
+	int		zero_len;
 	char	*str;
 	int		write_count;
 }	t_info;
@@ -49,6 +49,7 @@ void	ft_generate_p(t_info *info);
 void	ft_generate_di(t_info *info);
 void	ft_generate_u(t_info *info);
 void	ft_generate_x(t_info *info);
+void	ft_generate_ps(t_info *info);
 void	ft_setinfo(t_info *info);
 void	ft_setstr(t_info *info, char *s);
 int		ft_max(int a, int b);

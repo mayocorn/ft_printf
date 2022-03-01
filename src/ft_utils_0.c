@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_utils_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 08:19:32 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 09:33:24 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:07:53 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../include/ft_printf.h"
 
 int	ft_max(int a, int b)
 {
@@ -28,7 +26,7 @@ int	ft_min(int a, int b)
 		return (b);
 }
 
-size_t	ft_count_digit(int n)
+int	ft_count_digit(int n)
 {
 	size_t	res;
 

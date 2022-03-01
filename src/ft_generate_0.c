@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_generate_0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/30 00:30:13 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:05:38 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_generate_c(t_info *info)
 {
-	char	s;
+	char	c;
 
-	s = (char)va_arg(info->args, int);
+	c = (char)va_arg(info->args, int);
 	info->s_len = 1;
-	info->zero_flag = FALSE;
+	info->zero_flag = false;
 	ft_setinfo(info);
-	ft_setstr(info, &s);
+	ft_setstr(info, &c);
 }
 
 void	ft_generate_s(t_info *info)
@@ -34,14 +34,14 @@ void	ft_generate_s(t_info *info)
 		s = ft_strdup(s);
 	if (s == NULL)
 	{
-		info->write_count = -1;
+		info->write_count = ERROR;
 		return ;
 	}
 	if (info->precision < 0)
 		info->s_len = ft_strlen(s);
 	else
 		info->s_len = ft_min(ft_strlen(s), info->precision);
-	info->zero_flag = FALSE;
+	info->zero_flag = false;
 	ft_setinfo(info);
 	ft_setstr(info, s);
 	free(s);
@@ -90,16 +90,16 @@ void	ft_generate_di(t_info *info)
 	n = va_arg(info->args, int);
 	if (n < 0)
 		ft_strlcpy(info->prefix, "-", 3);
-	else if (info->plus_flag == TRUE)
+	else if (info->plus_flag == true)
 		ft_strlcpy(info->prefix, "+", 3);
-	else if (info->space_flag == TRUE)
+	else if (info->space_flag == true)
 		ft_strlcpy(info->prefix, " ", 3);
 	if (info->precision < 0)
 		info->s_len = ft_max(ft_count_digit(n), 1);
 	else
 	{
 		info->s_len = ft_count_digit(n);
-		info->zero_flag = FALSE;
+		info->zero_flag = false;
 		info->zero_len = ft_max(info->precision, info->s_len) - info->s_len;
 	}
 	ft_setinfo(info);
