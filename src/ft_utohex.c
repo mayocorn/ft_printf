@@ -6,11 +6,24 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 07:26:43 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/02/22 04:06:03 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:27:26 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+int	ft_count_digit_h(unsigned long n)
+{
+	int	res;
+
+	res = 0;
+	while (n)
+	{
+		n /= 16;
+		res++;
+	}
+	return (res);
+}
 
 static size_t	ft_getdigit_hex(unsigned long n)
 {

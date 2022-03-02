@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 05:49:21 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/29 08:40:32 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:26:51 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+int	ft_count_digit_u(unsigned int n)
+{
+	int	res;
+
+	res = 0;
+	while (n)
+	{
+		n /= 10;
+		res++;
+	}
+	return (res);
+}
 
 static size_t	ft_getdigit(unsigned int n)
 {

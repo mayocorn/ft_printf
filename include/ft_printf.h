@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 09:48:38 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/02 15:16:46 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:25:15 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_setinfo(t_info *info);
 void	ft_setstr(t_info *info, char *s);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
+int		ft_atoi2(const char *format);
 int		ft_count_digit(int n);
 int		ft_count_digit_u(unsigned int n);
 int		ft_count_digit_h(unsigned long n);

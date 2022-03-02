@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 05:33:16 by stsunoda          #+#    #+#              #
-#    Updated: 2022/01/30 01:02:33 by stsunoda         ###   ########.fr        #
+#    Updated: 2022/03/02 15:25:29 by mayocorn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

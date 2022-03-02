@@ -150,6 +150,6 @@ int main(int argc, char *argv[])
 	// b = ft_printf("[%X][%-.20X][%#X]\n", UINT_MAX, UINT_MAX, UINT_MAX);
 	// printf("%d\n",a);
 	// printf("%d\n",b);
-	printf("%3%\n");
+	ft_printf("%3%\n");
 	return 0;
 }

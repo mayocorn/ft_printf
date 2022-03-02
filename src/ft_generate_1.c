@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 05:29:42 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/02 15:19:52 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:35:12 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,7 @@ void	ft_generate_x(t_info *info, char c)
 	ft_generate_x_sub(info, c, n);
 }
 
-void	ft_generate_ps(t_info *info);
+void	ft_generate_ps(t_info *info)
+{
+	info->write_count = ERROR;
+}
