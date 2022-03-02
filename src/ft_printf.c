@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:09:25 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/01 10:33:52 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:33:49 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,7 @@ static void	ft_eval_format(const char **format, t_info *info)
 
 static void	ft_write(t_info *info)
 {
-	if (info->specifier == 'c')
-		ft_generate_c(info);
-	else if (info->specifier == 's')
-		ft_generate_s(info);
-	else if (info->specifier == 'p')
-		ft_generate_p(info);
-	else if (info->specifier == 'd' || info->specifier == 'i')
-		ft_generate_di(info);
-	else if (info->specifier == 'u')
-		ft_generate_u(info);
-	else if (info->specifier == 'x' || info->specifier == 'X')
-		ft_generate_x(info);
-	else if (info->specifier == '%')
-		ft_generate_ps(info);
-	else
-		info->write_count = -1;
-	if (info->write_count == -1)
+	if (info->write_count == ERROR)
 		return ;
 	info->write_count = write(1, info->str, info->buffer_size);
 	free(info->str);
@@ -57,8 +41,7 @@ static int	ft_parse_format(const char *format, t_info *info)
 		{
 			format++;
 			ft_eval_format(&format, info);
-			if (info->write_count != ERROR)
-				ft_write(info);
+			ft_write(info);
 			result = info->write_count;
 		}
 		else

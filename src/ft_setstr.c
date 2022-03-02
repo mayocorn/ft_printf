@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 02:08:41 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/01 11:02:42 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:19:22 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,17 @@ static void	ft_setstr_nonflag(t_info *info, char *s)
 
 void	ft_setstr(t_info *info, char *s)
 {
+	if (info->write_count == ERROR)
+		return ;
 	info->str = (char *)malloc(info->buffer_size);
 	if (info->str == NULL)
 	{
-		info->write_count = -1;
+		info->write_count = ERROR;
 		return ;
 	}
-	if (info->minus_flag == TRUE)
+	if (info->minus_flag == true)
 		ft_setstr_minusflag(info, s);
-	else if (info->zero_flag == TRUE)
+	else if (info->zero_flag == true)
 		ft_setstr_zeroflag(info, s);
 	else
 		ft_setstr_nonflag(info, s);

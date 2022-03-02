@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_1.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
+/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 09:48:58 by mayocorn          #+#    #+#             */
-/*   Updated: 2022/03/02 15:09:27 by mayocorn         ###   ########.fr       */
+/*   Created: 2022/01/06 14:02:36 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/01/13 08:27:28 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_atoi2(const char *format)
+char	*ft_strchr(const char *s, int c)
 {
-	int	res;
+	char	*res;
 
 	res = 0;
-	while (ft_isdigit(*format))
-	{
-		if (INT_MAX/10 < res)
-			return (ERROR);
-		res *= 10;
-		if (INT_MAX - res < format - '0')
-			return (ERROR);
-		res += *format - '0';
-		format++;
-	}
+	while (*s && *s != (char)c)
+		s++;
+	if (*s == (char)c)
+		res = (char *)s;
 	return (res);
 }

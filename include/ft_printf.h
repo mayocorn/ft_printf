@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 09:48:38 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/01 11:06:47 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:16:46 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ typedef struct s_info
 	bool	plus_flag;
 	int		field_width;
 	int		precision;
-	char	specifier;
 	va_list	args;
-	int		s_len;
+	size_t	s_len;
 	char	prefix[3];
 	int		buffer_size;
 	int		space_len;
@@ -48,15 +47,15 @@ void	ft_generate_s(t_info *info);
 void	ft_generate_p(t_info *info);
 void	ft_generate_di(t_info *info);
 void	ft_generate_u(t_info *info);
-void	ft_generate_x(t_info *info);
+void	ft_generate_x(t_info *info, char c);
 void	ft_generate_ps(t_info *info);
 void	ft_setinfo(t_info *info);
 void	ft_setstr(t_info *info, char *s);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
-size_t	ft_count_digit(int n);
-size_t	ft_count_digit_u(unsigned int n);
-size_t	ft_count_digit_h(unsigned long n);
+int		ft_count_digit(int n);
+int		ft_count_digit_u(unsigned int n);
+int		ft_count_digit_h(unsigned long n);
 char	*ft_utoa(unsigned int n);
 char	*ft_utohex(unsigned long n);
 #endif

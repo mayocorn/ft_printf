@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 04:50:22 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/01 10:42:56 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:16:08 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_init_info(t_info *info)
 	info->plus_flag = false;
 	info->field_width = 0;
 	info->precision = -1;
-	info->specifier = 0;
 	info->str = NULL;
 	info->buffer_size = 0;
 	ft_bzero(info->prefix, 3);
@@ -82,5 +81,22 @@ void	ft_eval_precision(const char **format, t_info *info)
 
 void	ft_eval_specifier(const char **format, t_info *info)
 {
-	info->specifier = **format;
+	if (info->write_count == ERROR)
+		return ;
+	if (**format == 'c')
+		ft_generate_c(info);
+	else if (**format == 's')
+		ft_generate_s(info);
+	else if (**format == 'p')
+		ft_generate_p(info);
+	else if (**format == 'd' || **format == 'i')
+		ft_generate_di(info);
+	else if (**format == 'u')
+		ft_generate_u(info);
+	else if (**format == 'x' || **format == 'X')
+		ft_generate_x(info, **format);
+	else if (**format == '%')
+		ft_generate_ps(info);
+	else
+		info->write_count = ERROR;
 }

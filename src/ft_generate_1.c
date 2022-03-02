@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_generate_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 05:29:42 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/01/30 00:30:26 by stsunoda         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:19:52 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_generate_u(t_info *info)
 	s = ft_utoa(n);
 	if (s == NULL)
 	{
-		info->write_count = -1;
+		info->write_count = ERROR;
 		return ;
 	}
 	if (info->precision < 0)
@@ -29,7 +29,7 @@ void	ft_generate_u(t_info *info)
 	else
 	{
 		info->s_len = ft_count_digit_u(n);
-		info->zero_flag = FALSE;
+		info->zero_flag = false;
 		info->zero_len = ft_max(info->precision, info->s_len) - info->s_len;
 	}
 	ft_setinfo(info);
@@ -37,7 +37,7 @@ void	ft_generate_u(t_info *info)
 	free(s);
 }
 
-static void	ft_generate_x_sub(t_info *info, unsigned int n)
+static void	ft_generate_x_sub(t_info *info, char c, unsigned int n)
 {
 	char	*s;
 	size_t	index;
@@ -45,10 +45,10 @@ static void	ft_generate_x_sub(t_info *info, unsigned int n)
 	s = ft_utohex(n);
 	if (s == NULL)
 	{
-		info->write_count = -1;
+		info->write_count = ERROR;
 		return ;
 	}
-	if (info->specifier == 'X')
+	if (c == 'X')
 	{
 		index = -1;
 		while (s[++index])
@@ -58,14 +58,14 @@ static void	ft_generate_x_sub(t_info *info, unsigned int n)
 	free(s);
 }
 
-void	ft_generate_x(t_info *info)
+void	ft_generate_x(t_info *info, char c)
 {
 	unsigned int	n;
 
 	n = va_arg(info->args, int);
-	if (info->sharp_flag == TRUE && n != 0)
+	if (info->sharp_flag == true && n != 0)
 	{
-		if (info->specifier == 'x')
+		if (c == 'x')
 			ft_strlcpy(info->prefix, "0x", 3);
 		else
 			ft_strlcpy(info->prefix, "0X", 3);
@@ -75,9 +75,11 @@ void	ft_generate_x(t_info *info)
 	else
 	{
 		info->s_len = ft_count_digit_h(n);
-		info->zero_flag = FALSE;
+		info->zero_flag = false;
 		info->zero_len = ft_max(info->precision, info->s_len) - info->s_len;
 	}
 	ft_setinfo(info);
-	ft_generate_x_sub(info, n);
+	ft_generate_x_sub(info, c, n);
 }
+
+void	ft_generate_ps(t_info *info);

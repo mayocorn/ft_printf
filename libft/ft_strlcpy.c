@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_1.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
+/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 09:48:58 by mayocorn          #+#    #+#             */
-/*   Updated: 2022/03/02 15:09:27 by mayocorn         ###   ########.fr       */
+/*   Created: 2022/01/05 13:46:28 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/01/14 07:18:18 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_atoi2(const char *format)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	int	res;
+	size_t	res;
 
 	res = 0;
-	while (ft_isdigit(*format))
-	{
-		if (INT_MAX/10 < res)
-			return (ERROR);
-		res *= 10;
-		if (INT_MAX - res < format - '0')
-			return (ERROR);
-		res += *format - '0';
-		format++;
-	}
+	while (*(src + res))
+		res++;
+	if (!dstsize)
+		return (res);
+	while (--dstsize && *src)
+		*(dest++) = *(src++);
+	*dest = 0;
 	return (res);
 }

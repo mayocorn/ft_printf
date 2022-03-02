@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_1.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 09:48:58 by mayocorn          #+#    #+#             */
-/*   Updated: 2022/03/02 15:09:27 by mayocorn         ###   ########.fr       */
+/*   Created: 2022/01/11 06:20:58 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/02/28 15:35:45 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_atoi2(const char *format)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	res;
+	size_t	index;
 
-	res = 0;
-	while (ft_isdigit(*format))
-	{
-		if (INT_MAX/10 < res)
-			return (ERROR);
-		res *= 10;
-		if (INT_MAX - res < format - '0')
-			return (ERROR);
-		res += *format - '0';
-		format++;
-	}
-	return (res);
+	if (!s || !f)
+		return ;
+	index = -1;
+	while (s[++index])
+		f((unsigned int)index, &s[index]);
 }

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_1.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
+/*   By: stsunoda <stsunoda@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 09:48:58 by mayocorn          #+#    #+#             */
-/*   Updated: 2022/03/02 15:09:27 by mayocorn         ###   ########.fr       */
+/*   Created: 2022/01/12 03:10:23 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/01/14 08:27:48 by stsunoda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_atoi2(const char *format)
+int	ft_lstsize(t_list *lst)
 {
-	int	res;
+	int		res;
 
 	res = 0;
-	while (ft_isdigit(*format))
+	while (lst)
 	{
-		if (INT_MAX/10 < res)
-			return (ERROR);
-		res *= 10;
-		if (INT_MAX - res < format - '0')
-			return (ERROR);
-		res += *format - '0';
-		format++;
+		lst = lst->next;
+		res++;
 	}
 	return (res);
 }

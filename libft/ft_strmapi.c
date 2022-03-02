@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_1.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 09:48:58 by mayocorn          #+#    #+#             */
-/*   Updated: 2022/03/02 15:09:27 by mayocorn         ###   ########.fr       */
+/*   Created: 2022/01/11 05:09:43 by stsunoda          #+#    #+#             */
+/*   Updated: 2022/02/28 15:38:24 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_atoi2(const char *format)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	res;
+	char	*res;
+	size_t	index;
 
-	res = 0;
-	while (ft_isdigit(*format))
-	{
-		if (INT_MAX/10 < res)
-			return (ERROR);
-		res *= 10;
-		if (INT_MAX - res < format - '0')
-			return (ERROR);
-		res += *format - '0';
-		format++;
-	}
+	if (!s || !f)
+		return (0);
+	res = ft_strdup(s);
+	if (!res)
+		return (0);
+	index = -1;
+	while (s[++index])
+		res[index] = f((unsigned int)index, s[index]);
 	return (res);
 }

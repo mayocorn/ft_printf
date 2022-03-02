@@ -6,7 +6,7 @@
 /*   By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 06:01:23 by stsunoda          #+#    #+#             */
-/*   Updated: 2022/03/01 11:05:38 by mayocorn         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:12:23 by mayocorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ void	ft_generate_s(t_info *info)
 		info->write_count = ERROR;
 		return ;
 	}
-	if (info->precision < 0)
-		info->s_len = ft_strlen(s);
-	else
-		info->s_len = ft_min(ft_strlen(s), info->precision);
+	info->s_len = ft_strlen(s);
+	if (info->precision >= 0)
+	{
+		if(INT_MAX < info->s_len)
+			info->s_len = INT_MAX;
+		info->s_len = ft_min(info->s_len, info->precision);
+	}
 	info->zero_flag = false;
 	ft_setinfo(info);
 	ft_setstr(info, s);
@@ -56,7 +59,7 @@ void	ft_generate_p(t_info *info)
 	s = ft_utohex(n);
 	if (s == NULL)
 	{
-		info->write_count = -1;
+		info->write_count = ERROR;
 		return ;
 	}
 	info->s_len = ft_max(ft_count_digit_h(n), 1);
@@ -73,7 +76,7 @@ static void	ft_generate_di_sub(t_info *info, int n)
 	s = ft_itoa(n);
 	if (s == NULL)
 	{
-		info->write_count = -1;
+		info->write_count = ERROR;
 		return ;
 	}
 	if (*s == '-')
