@@ -6,27 +6,33 @@
 #    By: mayocorn <twitter@mayocornsuki>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 05:33:16 by stsunoda          #+#    #+#              #
-#    Updated: 2022/03/02 15:25:29 by mayocorn         ###   ########.fr        #
+#    Updated: 2022/03/02 17:28:20 by mayocorn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCDIR	= ./src
-SRC = ft_printf.c ft_eval_format.c ft_generate_0.c ft_generate_1.c \
-		 ft_setstr.c ft_utoa.c ft_utohex.c ft_utils.c
-SRCS = $(addprefix $(SRCDIR)/, $(SRC))
-OBJS = $(addprefix $(SRCDIR)/, $(notdir $(SRCS:.c=.o)))
+SRCDIR = ./src/
+OBJDIR = ./obj/
+SRCS = ft_printf.c ft_eval_format.c ft_generate_0.c \
+		ft_generate_1.c ft_setstr.c ft_utoa.c ft_utohex.c ft_utils.c
+OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:%.c=%.o)))
+DEPS = $(OBJS:%.o=%.d)
 LIBFT = libft
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./include
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJDIR) $(OBJS)
 	$(MAKE) -C $(LIBFT)
 	cp $(LIBFT)/libft.a $@
-	ar -rcs $@ $^
+	ar -rcs $@ $(OBJS) 
+
+$(OBJDIR):
+	mkdir obj
+
+-include $(DEPS)
 
 all: $(NAME)
 
@@ -34,7 +40,7 @@ bonus: all
 
 clean: 
 	$(MAKE) clean -C $(LIBFT)
-	rm -f $(OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT)
