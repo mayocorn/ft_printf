@@ -151,5 +151,6 @@ int main(int argc, char *argv[])
 	// printf("%d\n",a);
 	// printf("%d\n",b);
 	ft_printf("%3%\n");
+	printf("%3%\n");
 	return 0;
 }
