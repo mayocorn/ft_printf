@@ -52,7 +52,7 @@ void	ft_eval_flag(const char **format, t_info *info)
 
 void	ft_eval_field_width(const char **format, t_info *info)
 {
-	int result;
+	int	result;
 
 	result = ft_atoi2(*format);
 	if (result == ERROR)

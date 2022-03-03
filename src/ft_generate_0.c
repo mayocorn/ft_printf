@@ -40,7 +40,7 @@ void	ft_generate_s(t_info *info)
 	info->s_len = ft_strlen(s);
 	if (info->precision >= 0)
 	{
-		if(INT_MAX < info->s_len)
+		if (INT_MAX < info->s_len)
 			info->s_len = INT_MAX;
 		info->s_len = ft_min(info->s_len, info->precision);
 	}

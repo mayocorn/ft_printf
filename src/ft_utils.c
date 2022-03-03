@@ -48,7 +48,7 @@ int	ft_atoi2(const char *format)
 	res = 0;
 	while (ft_isdigit(*format))
 	{
-		if (INT_MAX/10 < res)
+		if (INT_MAX / 10 < res)
 			return (ERROR);
 		res *= 10;
 		if (INT_MAX - res < *format - '0')

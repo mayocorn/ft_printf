@@ -19,7 +19,7 @@ OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:%.c=%.o)))
 DEPS = $(OBJS:%.o=%.d)
 LIBFT = libft
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./include
+CFLAGS = -Wall -Wextra -Werror
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
